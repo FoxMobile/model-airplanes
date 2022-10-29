@@ -8,7 +8,6 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.modelairplanes.R
 import com.modelairplanes.databinding.ActivityMainBinding
-import com.modelairplanes.databinding.ActivitySplashBinding
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,8 +21,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.navigation_home, R.id.navigation_dashboard
