@@ -1,6 +1,7 @@
 package com.modelairplanes
 
 import android.app.Application
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.modelairplanes.di.dataModule
 import com.modelairplanes.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
@@ -12,6 +13,8 @@ class MainApplication : Application() {
     override fun onCreate() {
         super.onCreate()
 
+        initFirebase()
+
         startKoin {
             // Log Koin into Android logger
             androidLogger()
@@ -21,5 +24,9 @@ class MainApplication : Application() {
             modules(listOf(dataModule, viewModelModule))
         }
 
+    }
+
+    private fun initFirebase() {
+        FirebaseAnalytics.getInstance(this)
     }
 }

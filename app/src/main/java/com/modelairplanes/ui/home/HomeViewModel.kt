@@ -1,14 +1,11 @@
 package com.modelairplanes.ui.home
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.google.firebase.firestore.CollectionReference
+import com.google.firebase.firestore.Query
 
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel(private val docReference: CollectionReference) : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
-    }
-    val text: LiveData<String> = _text
+    var query: Query = docReference.limit(10).orderBy("data", Query.Direction.ASCENDING)
 }
