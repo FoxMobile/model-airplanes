@@ -5,9 +5,8 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.modelairplanes.ui.MainActivity
-import com.modelairplanes.R
 import com.modelairplanes.databinding.ActivitySplashBinding
-import com.modelairplanes.ui.LoginActivity
+import com.modelairplanes.ui.login.LoginActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SplashActivity : AppCompatActivity() {
