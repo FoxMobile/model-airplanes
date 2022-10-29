@@ -7,6 +7,7 @@ import androidx.lifecycle.lifecycleScope
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract
 import com.firebase.ui.auth.data.model.FirebaseAuthUIAuthenticationResult
+import com.modelairplanes.R
 import com.modelairplanes.ui.MainActivity
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -43,6 +44,8 @@ class LoginActivity : AppCompatActivity() {
 
         val signInIntent = AuthUI.getInstance()
             .createSignInIntentBuilder()
+            .setTheme(R.style.LoginTheme)
+            .setLogo(R.mipmap.ic_launcher)
             .setAvailableProviders(providers)
             .build()
         signInLauncher.launch(signInIntent)
