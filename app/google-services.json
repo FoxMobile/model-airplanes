@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "655769978795",
+    "project_id": "model-airplane",
+    "storage_bucket": "model-airplane.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:655769978795:android:dfc704315e06879d21f4ee",
+        "android_client_info": {
+          "package_name": "com.modelairplanes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "655769978795-2ee6tug6frv504cbt6efj3l0vmb8rv7n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.modelairplanes",
+            "certificate_hash": "9f94cbf421f34440e1deb6813d3bc1853f8bcd42"
+          }
+        },
+        {
+          "client_id": "655769978795-a1tvdvfkjsb7scsk57eklpa244qvui45.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTstmtrJWDkWn3VvXjtm0BDOt402sAkvQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "655769978795-a1tvdvfkjsb7scsk57eklpa244qvui45.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
