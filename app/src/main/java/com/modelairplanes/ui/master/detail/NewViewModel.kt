@@ -20,12 +20,24 @@ class NewViewModel(val collectionReference: CollectionReference) : ViewModel() {
     private val _deleteDoc = MutableStateFlow(false)
     val deleteDoc: StateFlow<Boolean> = _deleteDoc
 
-    fun saveData(user: User, dateLimit: Date, urlDocument: String) {
+    fun saveData(user: User, isPayment: Boolean, dateLimit: Date, urlDocument: String) {
         collectionReference.document(user.uid!!).collection("docs").document().set(
             hashMapOf(
-                "is_payment" to false,
+                "is_payment" to isPayment,
                 "limit_payment" to dateLimit,
                 "url_document" to urlDocument
+            )
+        ).addOnSuccessListener {
+            _createDoc.value = true
+        }.addOnFailureListener {
+            _createDoc.value = false
+        }
+    }
+
+    fun updateData(user: User, isPayment: Boolean, id: String) {
+        collectionReference.document(user.uid!!).collection("docs").document(id).set(
+            hashMapOf(
+                "is_payment" to isPayment
             )
         ).addOnSuccessListener {
             _createDoc.value = true

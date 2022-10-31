@@ -20,5 +20,8 @@
     <string name="document">Subir Documento</string>
     <string name="title_new">Novo documento</string>
     <string name="title_list">Lista de documentos</string>
+    <string name="is_payment">Pago</string>
+    <string name="not_payment">Pendente</string>
+    <string name="status">Estado do pagamento</string>
 
 </resources>

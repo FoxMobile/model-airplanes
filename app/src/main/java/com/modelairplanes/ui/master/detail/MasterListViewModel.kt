@@ -19,6 +19,7 @@ class MasterListViewModel(val collectionReference: CollectionReference) : ViewMo
     private val items: ArrayList<Payment> = arrayListOf()
 
     fun getData(user: User) {
+        items.clear()
         collectionReference.document(user.uid!!).collection("docs").limit(10)
             .orderBy("limit_payment", Query.Direction.ASCENDING)
             .get(Source.SERVER)

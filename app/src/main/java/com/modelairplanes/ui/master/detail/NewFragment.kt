@@ -21,6 +21,7 @@ import com.modelairplanes.model.Payment
 import com.modelairplanes.model.User
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.time.Year
 import java.util.*
 
 
@@ -49,7 +50,7 @@ class NewFragment : Fragment() {
         initUI()
         setupUIData()
 
-        binding.documentLayout.setOnClickListener {
+        binding.document.setOnClickListener {
             selectImage()
         }
 
@@ -57,13 +58,33 @@ class NewFragment : Fragment() {
             newViewModel.deleteData(user, payment!!)
         }
         binding.save.setOnClickListener {
-            uploadImage()
+            payment?.let {
+                newViewModel.updateData(user, binding.radioPayment.isChecked, it.id!!)
+            } ?: kotlin.run {
+                uploadImage()
+            }
         }
     }
 
     private fun setupUIData() {
         payment?.let {
             binding.delete.isVisible = true
+            binding.document.setText(it.url_document)
+            val calendar = GregorianCalendar.getInstance()
+            calendar.timeInMillis = it.datePayment?.time!!
+
+
+            binding.datePicker.updateDate(
+                calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH) - 1,
+                calendar.get(Calendar.DAY_OF_MONTH)
+            )
+
+            if (it.is_payment == true) {
+                binding.radioPayment.isChecked = true
+            } else {
+                binding.radioNotPayment.isChecked = true
+            }
 
         } ?: kotlin.run {
             binding.delete.isVisible = false
@@ -73,13 +94,13 @@ class NewFragment : Fragment() {
     private fun initUI() {
         viewLifecycleOwner.lifecycleScope.launch {
             newViewModel.createDoc.collect {
-                if(it) findNavController().popBackStack()
+                if (it) findNavController().popBackStack()
             }
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
             newViewModel.deleteDoc.collect {
-                if(it) findNavController().popBackStack()
+                if (it) findNavController().popBackStack()
             }
         }
     }
@@ -142,7 +163,7 @@ class NewFragment : Fragment() {
                     calendar.set(year, month, day)
 
 
-                    newViewModel.saveData(user, calendar.time, it.storage.downloadUrl.toString())
+                    newViewModel.saveData(user, binding.radioPayment.isChecked, calendar.time, it.storage.downloadUrl.toString())
 
                 }
                 .addOnFailureListener { e -> // Error, Image not uploaded
