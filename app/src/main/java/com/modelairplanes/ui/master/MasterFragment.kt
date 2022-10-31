@@ -1,21 +1,25 @@
-package com.modelairplanes.ui.home
+package com.modelairplanes.ui.master
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import com.modelairplanes.databinding.FragmentHomeBinding
+import androidx.navigation.fragment.findNavController
+import com.modelairplanes.R
+import com.modelairplanes.databinding.FragmentMasterBinding
+import com.modelairplanes.model.User
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class HomeFragment : Fragment() {
+class MasterFragment: Fragment(), MasterInteraction {
 
-    private var _binding: FragmentHomeBinding? = null
+    private var _binding: FragmentMasterBinding? = null
     private val binding get() = _binding!!
 
-    private val homeViewModel: HomeViewModel by viewModel()
+    private val masterViewModel: MasterViewModel by viewModel()
 
 
     override fun onCreateView(
@@ -23,20 +27,20 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        _binding = FragmentMasterBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initUI()
-        homeViewModel.getData()
+        masterViewModel.getData()
     }
 
     private fun initUI() = with(viewLifecycleOwner.lifecycleScope) {
         launch {
-            homeViewModel.listItem.collect { items ->
-                binding.recycler.adapter =  HomeAdapter(items)
+            masterViewModel.listItem.collect { items ->
+                binding.recycler.adapter =  MasterAdapter(items, this@MasterFragment)
             }
         }
     }
@@ -45,5 +49,9 @@ class HomeFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onClickUser(user: User) {
+        findNavController().navigate(R.id.masterDetailActivity, bundleOf("user" to user))
     }
 }

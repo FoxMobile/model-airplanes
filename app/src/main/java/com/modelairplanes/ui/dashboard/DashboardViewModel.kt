@@ -1,15 +1,11 @@
 package com.modelairplanes.ui.dashboard
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.google.firebase.auth.ActionCodeEmailInfo
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.DocumentReference
-import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.Source
-import com.modelairplanes.ui.home.Payment
+import com.modelairplanes.model.User
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 

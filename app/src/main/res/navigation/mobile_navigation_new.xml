@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation_new"
+    app:startDestination="@id/navigation_master_list">
+
+    <fragment
+        android:id="@+id/navigation_master_list"
+        android:name="com.modelairplanes.ui.master.detail.MasterListFragment"
+        android:label="@string/title_list"
+        tools:layout="@layout/fragment_master_list">
+        <argument
+            android:name="user"
+            app:argType="com.modelairplanes.model.User" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_new"
+        android:name="com.modelairplanes.ui.master.detail.NewFragment"
+        android:label="@string/title_new"
+        tools:layout="@layout/fragment_new">
+        <argument
+            android:name="user"
+            app:argType="com.modelairplanes.model.User" />
+
+        <argument
+            android:name="payment"
+            app:argType="com.modelairplanes.model.Payment" />
+    </fragment>
+
+
+</navigation>

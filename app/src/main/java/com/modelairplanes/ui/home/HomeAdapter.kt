@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.modelairplanes.databinding.HomeItemBinding
+import com.modelairplanes.model.Payment
 
 
 class HomeAdapter(val paymentList: List<Payment>) :
