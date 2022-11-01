@@ -2,6 +2,7 @@
     <string name="app_name">Model Airplanes</string>
     <string name="title_home">Home</string>
     <string name="title_profile">Perfil</string>
+    <string name="title_master">Master</string>
 
     <string name="title_notifications">Notifications</string>
     <string name="default_notification_channel_id">777</string>
@@ -11,5 +12,16 @@
     <string name="update_info">Atualizar Informações</string>
     <string name="email">Email</string>
     <string name="phone">Contato</string>
+    <string name="user_name_data">Nome: %s</string>
+    <string name="user_email_data">E-mail: %s</string>
+    <string name="add">Adicionar</string>
+    <string name="save">Enviar</string>
+    <string name="delete">Deletar</string>
+    <string name="document">Subir Documento</string>
+    <string name="title_new">Novo documento</string>
+    <string name="title_list">Lista de documentos</string>
+    <string name="is_payment">Pago</string>
+    <string name="not_payment">Pendente</string>
+    <string name="status">Estado do pagamento</string>
 
 </resources>

@@ -23,7 +23,8 @@ class LoginViewModel(
         collectionReference.document(firebaseAuth.currentUser!!.uid).set(
             hashMapOf(
                 "name" to firebaseAuth.currentUser?.displayName,
-                "email" to firebaseAuth.currentUser?.email
+                "email" to firebaseAuth.currentUser?.email,
+                "uid" to firebaseAuth.currentUser?.uid
             )
         ).addOnSuccessListener {
             _createUser.value = true
